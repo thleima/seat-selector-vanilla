@@ -4,15 +4,7 @@ const theaterSeats = [
   ['O', 'O', 'O']
 ]
 
-function checkAvailableSeats(availableSeats, theaterSeats){
-  for (let row=0; row < theaterSeats.length; row++){
-    for (let col = 0; col < theaterSeats[row].length; col++){
-      if(theaterSeats[row][col]==='O'){
-        availableSeats.push({row, col});
-      }
-    }
-  }
-}
+const seatsBooked = []
 
 function updateSeatStatus(row, col, status){
   const seats = document.getElementsByClassName('seat');
@@ -23,20 +15,33 @@ function updateSeatStatus(row, col, status){
 
 function displaySelected(seatsBooked){
   const text = document.getElementById('display')
-  if (seatsBooked.lenght === 1) {
-    text.innerText = `Seats Selected is : `
+  if (seatsBooked.length === 1) {
+    text.innerText = `Seats Selected is : ${seatsBooked[0]}`
+  } else {
+    text.innerText = `Seats Selected are : ${seatsBooked}`
+    
   }
 }
-
-
 
 function bookSeat(row, col){
   if (theaterSeats[row][col] === 'O'){
     theaterSeats[row][col] = 'X';
     updateSeatStatus(row,col,'unavailable');
-    alert(`Seat ${String.fromCharCode(65 + row)}${col + 1} is booked`)
+    seatsBooked.push(`${String.fromCharCode(65 + row)}${col + 1}`)
+    displaySelected(seatsBooked);
   } else {
     alert(`Seat ${String.fromCharCode(65 + row)}${col + 1} is unavailable`)
+  }
+}
+
+
+function checkAvailableSeats(availableSeats, theaterSeats){
+  for (let row=0; row < theaterSeats.length; row++){
+    for (let col = 0; col < theaterSeats[row].length; col++){
+      if(theaterSeats[row][col]==='O'){
+        availableSeats.push({row, col});
+      }
+    }
   }
 }
 
