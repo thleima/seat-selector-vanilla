@@ -37,11 +37,7 @@ function displaySelected(seatsBooked){
   if (seatsBooked.length === 1) {
     text.innerText = `Seats Selected is : ${seatsBooked[0]}`
   } else {
-    const totalSeatsBooked = seatsBooked.map((seat, id) => {
-      return ` ${seat}`
-    })
-    console.log(totalSeatsBooked)
-    text.innerText = `Seats Selected are : ${totalSeatsBooked}` 
+    text.innerText = `Seats Selected are : ${seatsBooked}` 
   }
 }
 
