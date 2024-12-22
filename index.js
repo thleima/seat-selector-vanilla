@@ -16,7 +16,7 @@ const seatsBooked = []
 function bookSeat(row, col){
   if (theaterSeats[row][col] === 'O'){
     theaterSeats[row][col] = 'X';
-    updateSeatStatus(row,col,'unavailable');
+    updateSeatColor(row,col);
     seatsBooked.push(`${String.fromCharCode(65 + row)}${col + 1}`)
     displaySelected(seatsBooked);
   } else {
@@ -25,11 +25,11 @@ function bookSeat(row, col){
 }
 
 // bookSeat() Helper function n°1
-function updateSeatStatus(row, col, status){
+function updateSeatColor(row, col){
   const seats = document.getElementsByClassName('seat');
   const index = row * 3 + col;
   seats[index].classList.remove('available');
-  seats[index].classList.add(status);
+  seats[index].classList.add('unavailable');
 }
 // bookSeat() Helper function n°2
 function displaySelected(seatsBooked){
