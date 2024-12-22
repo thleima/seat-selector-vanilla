@@ -50,7 +50,7 @@ Book a random seat :
 */
 function bookRandomSeat(){
   const availableSeats = [];
-  checkAvailableSeats(availableSeats, theaterSeats);
+  pushAvailableSeats(availableSeats, theaterSeats);
   if (availableSeats.length > 0) {
     const randomIndex = Math.floor(Math.random() * availableSeats.length);
     const {row, col} = availableSeats[randomIndex];
@@ -61,7 +61,7 @@ function bookRandomSeat(){
 }
 
 // bookRandomSeat() Helper function 
-function checkAvailableSeats(availableSeats, theaterSeats){
+function pushAvailableSeats(availableSeats, theaterSeats){
   for (let row=0; row < theaterSeats.length; row++){
     for (let col = 0; col < theaterSeats[row].length; col++){
       if(theaterSeats[row][col]==='O'){
