@@ -4,8 +4,7 @@ const theaterSeats = [
   ['O', 'O', 'O']
 ]
 
-function checkAvailableSeats(){
-  const availableSeats = [];
+function checkAvailableSeats(availableSeats, theaterSeats){
   for (let row=0; row < theaterSeats.length; row++){
     for (let col = 0; col < theaterSeats[row].length; col++){
       if(theaterSeats[row][col]==='O'){
@@ -13,7 +12,6 @@ function checkAvailableSeats(){
       }
     }
   }
-  console.log(availableSeats);
 }
 
 function updateSeatStatus(row, col, status){
@@ -43,15 +41,8 @@ function bookSeat(row, col){
 }
 
 function bookRandomSeat(){
-  checkAvailableSeats();
   const availableSeats = [];
-  for (let row=0; row < theaterSeats.length; row++){
-    for (let col = 0; col < theaterSeats[row].length; col++){
-      if(theaterSeats[row][col]==='O'){
-        availableSeats.push({row, col});
-      }
-    }
-  }
+  checkAvailableSeats(availableSeats, theaterSeats);
   if (availableSeats.length > 0) {
     const randomIndex = Math.floor(Math.random() * availableSeats.length);
     const {row, col} = availableSeats[randomIndex];
